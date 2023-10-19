@@ -5,156 +5,182 @@
 --Silas Henrique da Silva Oliveira - RM: 98965
 
 
--- drop de todas as tabelas
-drop table T_JR_ATENDIMENTO;
-drop table T_JR_LOCALIZACAO;
-drop table T_JR_MODAL;
-drop table T_JR_PRESTADOR;
-drop table T_JR_VEICULO_CLIENTE;
-drop table T_JR_SEGURO;
-drop table T_JR_CLIENTE;
-drop table T_JR_ENDERECO;
-drop table T_JR_fabricante;
-drop table T_JR_IMPLEMENTO;
-
---criacaoo da tabela t_jr_fabricante
-create table T_JR_FABRICANTE(
-	id_fabricante numeric constraint PK_T_JR_FABRICANTE primary key,
-	nome varchar(60) not null,
-	modelo varchar(60) not null
-
-);
---criacao da tabela t_jr_implemento
-create table T_JR_IMPLEMENTO(
-	id_implemento numeric constraint PK_T_JR_IMPLEMENTO primary key,
-	tipo_implemento varchar(60) not null
-);
---criacao da tabela t_jr_endereco
-create table T_JR_ENDERECO(
-	id_endereco numeric constraint PK_T_JR_ENDERECO primary key,
-	cep varchar(60) not null,
-	logradouro varchar(60) not null,
-	numero numeric not null,
-	complemento varchar(60),
-	referencia varchar(60)
-);
---criacao da tabela t_jr_cliente
-create table T_JR_CLIENTE(
-	id_cliente numeric constraint PK_T_JR_CLIENTE primary key,
-	cpf varchar(60) not null,
-	nome_completo varchar(60) not null,
-	rg varchar(60) not null,
-    id_endereco numeric not null,
-	CONSTRAINT FK_T_JR_CLIENTE_T_JR_ENDERECO FOREIGN KEY (id_endereco) references T_JR_ENDERECO(id_endereco)
-
-);
---criacao da tabela t_jr_seguro
-create table T_JR_SEGURO(
-	numero_apolice varchar(60) constraint PK_T_JR_SEGURO primary key,
-    id_cliente numeric not null,
-    CONSTRAINT FK_T_JR_SEGURO_T_JR_CLIENTE FOREIGN KEY (id_cliente) references T_JR_CLIENTE(id_cliente)
-);
---criacao da tabela t_jr_veiculo_cliente
-create table T_JR_VEICULO_CLIENTE(
-	id_veiculo numeric constraint PK_T_JR_VEICULO_CLIENTE primary key,
-	placa varchar(60) not null,
-	ano numeric(4) not null,
-	portas numeric,
-	renavam numeric not null,
-    numero_apolice varchar(60) not null,
-    id_implemento numeric not null,
-    id_fabricante numeric not null,
-    id_cliente numeric not null,
-	CONSTRAINT FK_T_JR_VEICULO_CLIENTE_T_JR_SEGURO FOREIGN KEY (numero_apolice) references T_JR_SEGURO(numero_apolice),
-	CONSTRAINT FK_T_JR_VEICULO_CLIENTE_T_JR_IMPLEMENTO FOREIGN KEY (id_implemento) references T_JR_IMPLEMENTO(id_implemento),
-	CONSTRAINT FK_T_JR_VEICULO_CLIENTE_T_JR_FABRICANTE FOREIGN KEY (id_fabricante) references T_JR_FABRICANTE(id_fabricante),
-	CONSTRAINT FK_T_JR_VEICULO_CLIENTE_T_JR_CLIENTE FOREIGN KEY (id_cliente) references T_JR_CLIENTE(id_cliente)
-);
---criacao da tabela t_jr_prestador
-create table T_JR_PRESTADOR(
-	id_prestador numeric constraint PK_T_JR_PRESTADOR primary key,
-	cpf varchar(60) not null,
-	nome_completo varchar(60) not null,
-	rg varchar(60) not null,
-    id_endereco numeric not null,
-	CONSTRAINT FK_T_JR_PRESTADOR_T_JR_ENDERECO FOREIGN KEY (id_endereco) references T_JR_ENDERECO(id_endereco)
-);
---criacao da tabela t_jr_modal
-create table T_JR_MODAL(
-	id_modal numeric constraint PK_T_JR_MODAL primary key,
-	modelo varchar(60) not null,
-	placa varchar(60) not null,
-	disponibilidade numeric(1) not null,
-    id_prestador numeric,
-	CONSTRAINT FK_T_JR_MODAL_T_JR_PRESTADOR FOREIGN KEY (id_prestador) references T_JR_PRESTADOR(id_prestador)
-);
---criacao da tabela t_jr_localizacao
-create table T_JR_LOCALIZACAO(
-	id_localizacao numeric constraint PK_T_JR_LOCALIZACAO primary key,
-	nome_rodovia varchar(60) not null,
-	km numeric(10) not null,
-	cep varchar(60),
-	referencia varchar(60)
-);
---criacao da tabela t_jr_atendimento
-create table T_JR_ATENDIMENTO(
-	id_atendimento numeric constraint PK_T_JR_ATENDIMENTO primary key,
-	data_atendimento date not null,
-	pbtc numeric not null,
-    id_localizacao numeric not null,
-    id_cliente numeric not null,
-    id_veiculo numeric not null,
-    id_modal numeric not null,
-	CONSTRAINT FK_T_JR_ATENTIMENTO_T_JR_LOCALIZACAO FOREIGN KEY (id_localizacao) references T_JR_LOCALIZACAO(id_localizacao),
-	CONSTRAINT FK_T_JR_ATENTIMENTO_T_JR_CLIENTE FOREIGN KEY (id_cliente) references T_JR_CLIENTE(id_cliente),
-	CONSTRAINT FK_T_JR_ATENTIMENTO_T_JR_VEICULO_CLIENTE FOREIGN KEY (id_veiculo) references T_JR_VEICULO_CLIENTE(id_veiculo),
-	CONSTRAINT FK_T_JR_ATENTIMENTO_T_JR_MODAL FOREIGN KEY (id_modal) references T_JR_MODAL(id_modal)
-
-);
---------------------------------------------------------------------------------
---------------------------------------------------------------------------------
+-----------------DROP DAS TABELAS UTILIZANDO DROP TABLE-------------------------
 --------------------------------------------------------------------------------
 
---insert na tabela t_jr_fabricante
-INSERT INTO t_jr_fabricante(id_fabricante,nome, modelo) VALUES(1,'Volvo','FMX');
-INSERT INTO t_jr_fabricante(id_fabricante,nome, modelo) VALUES(2,'SCANIA','P 420');
-INSERT INTO t_jr_fabricante(id_fabricante,nome, modelo) VALUES(3,'Mercedes','Actros Euro6');
-INSERT INTO t_jr_fabricante(id_fabricante,nome, modelo) VALUES(4,'Ford','Ranger');
-INSERT INTO t_jr_fabricante(id_fabricante,nome, modelo) VALUES(5,'Scania','F 340');
-INSERT INTO t_jr_fabricante(id_fabricante,nome, modelo) VALUES(6,'Volvo','FH');
-INSERT INTO t_jr_fabricante(id_fabricante,nome, modelo) VALUES(7,'Mercedes','Euro10');
 
---Select para mostrar como está a tabela apos os insert
-select * from t_jr_fabricante;
+--DROP DE TODAS AS TABELAS EM ORDEM DE EXCLUSAO
+DROP TABLE T_JR_ATENDIMENTO;
+DROP TABLE T_JR_LOCALIZACAO;
+DROP TABLE T_JR_MODAL;
+DROP TABLE T_JR_PRESTADOR;
+DROP TABLE T_JR_VEICULO_CLIENTE;
+DROP TABLE T_JR_SEGURO;
+DROP TABLE T_JR_CLIENTE;
+DROP TABLE T_JR_ENDERECO;
+DROP TABLE T_JR_FABRICANTE;
+DROP TABLE T_JR_IMPLEMENTO;
 
---update da tabela t_jr_fabricante
-update t_jr_fabricante
-set nome = 'Renault'
-where modelo = 'Euro10';
+-----------------CRIACAO DAS TABELAS UTILIZANDO CREATE TABLE--------------------
+--------------------------------------------------------------------------------
 
-update t_jr_fabricante
-set modelo = 'Master'
-where nome = 'Renault';
 
-update t_jr_fabricante
-set modelo = 'FH 545'
-where nome = 'Volvo' and id_fabricante = 6;
+--CRIACAO DA TABELA T_JR_FABRICANTE
+CREATE TABLE T_JR_FABRICANTE(
+	id_fabricante NUMERIC CONSTRAINT PK_T_JR_FABRICANTE PRIMARY KEY,
+	nome VARCHAR2(60) NOT NULL,
+	modelo VARCHAR2(60) NOT NULL
 
---Select para mostrar como está a tabela t_jr_fabricante apos os update
-select * from t_jr_fabricante;
+);
 
---Delete na tabela t_jr_fabricante
-delete from t_jr_fabricante
-where nome = 'Renault';
+--CRIACAO DA TABELA T_JR_IMPLEMENTO
+CREATE TABLE T_JR_IMPLEMENTO(
+	id_implemento NUMERIC CONSTRAINT PK_T_JR_IMPLEMENTO PRIMARY KEY,
+	tipo_implemento VARCHAR2(60) NOT NULL
+);
 
-delete from t_jr_fabricante
-where modelo = 'Ranger';
+--CRIACAO DA TABELA T_JR_ENDERECO
+CREATE TABLE T_JR_ENDERECO(
+	id_endereco NUMERIC CONSTRAINT PK_T_JR_ENDERECO PRIMARY KEY,
+	cep VARCHAR2(60) NOT NULL,
+	logradouro VARCHAR2(60) NOT NULL,
+	numero NUMERIC NOT NULL,
+	complemento VARCHAR2(60),
+	referencia VARCHAR2(60)
+);
 
-delete from t_jr_fabricante
-where id_fabricante = 6;
+--CRIACAO DA TABELA T_JR_CLIENTE
+CREATE TABLE T_JR_CLIENTE(
+	id_cliente NUMERIC CONSTRAINT PK_T_JR_CLIENTE PRIMARY KEY,
+	cpf VARCHAR2(60) NOT NULL UNIQUE,
+	nome_completo VARCHAR2(60) NOT NULL,
+	rg VARCHAR2(60) NOT NULL,
+    id_endereco NUMERIC NOT NULL,
+	CONSTRAINT FK_T_JR_CLIENTE_T_JR_ENDERECO FOREIGN KEY (id_endereco) REFERENCES T_JR_ENDERECO(id_endereco)
 
---Select para mostrar como está a tabela t_jr_fabricante apos o delete
-select * from t_jr_fabricante;
+);
+
+--CRIACAO DA TABELA T_JR_SEGURO
+CREATE TABLE T_JR_SEGURO(
+	numero_apolice VARCHAR2(60) CONSTRAINT PK_T_JR_SEGURO PRIMARY KEY,
+    id_cliente NUMERIC NOT NULL,
+    CONSTRAINT FK_T_JR_SEGURO_T_JR_CLIENTE FOREIGN KEY (id_cliente) REFERENCES T_JR_CLIENTE(id_cliente)
+);
+
+--CRIACAO DA TABELA T_JR_VEICULO_CLIENTE
+CREATE TABLE T_JR_VEICULO_CLIENTE(
+	id_veiculo NUMERIC CONSTRAINT PK_T_JR_VEICULO_CLIENTE PRIMARY KEY,
+	placa VARCHAR2(60) NOT NULL,
+	ano NUMERIC(4) NOT NULL,
+	portas NUMERIC,
+	renavam NUMERIC NOT NULL,
+    numero_apolice VARCHAR2(60) NOT NULL,
+    id_implemento NUMERIC NOT NULL,
+    id_fabricante NUMERIC NOT NULL,
+    id_cliente NUMERIC NOT NULL,
+	CONSTRAINT FK_T_JR_VEICULO_CLIENTE_T_JR_SEGURO FOREIGN KEY (numero_apolice) REFERENCES T_JR_SEGURO(numero_apolice),
+	CONSTRAINT FK_T_JR_VEICULO_CLIENTE_T_JR_IMPLEMENTO FOREIGN KEY (id_implemento) REFERENCES T_JR_IMPLEMENTO(id_implemento),
+	CONSTRAINT FK_T_JR_VEICULO_CLIENTE_T_JR_FABRICANTE FOREIGN KEY (id_fabricante) REFERENCES T_JR_FABRICANTE(id_fabricante),
+	CONSTRAINT FK_T_JR_VEICULO_CLIENTE_T_JR_CLIENTE FOREIGN KEY (id_cliente) REFERENCES T_JR_CLIENTE(id_cliente)
+);
+
+--CRIACAO DA TABELA T_JR_PRESTADOR
+CREATE TABLE T_JR_PRESTADOR(
+	id_prestador NUMERIC CONSTRAINT PK_T_JR_PRESTADOR PRIMARY KEY,
+	cpf VARCHAR2(60) NOT NULL UNIQUE,
+	nome_completo VARCHAR2(60) NOT NULL,
+	rg VARCHAR2(60) NOT NULL,
+    id_endereco NUMERIC NOT NULL,
+	CONSTRAINT FK_T_JR_PRESTADOR_T_JR_ENDERECO FOREIGN KEY (id_endereco) REFERENCES T_JR_ENDERECO(id_endereco)
+);
+
+--CRIACAO DA TABELA T_JR_MODAL
+CREATE TABLE T_JR_MODAL(
+	id_modal numeric CONSTRAINT PK_T_JR_MODAL PRIMARY KEY,
+	modelo VARCHAR2(60) NOT NULL,
+	placa VARCHAR2(60) NOT NULL,
+	disponibilidade NUMERIC(1) NOT NULL,
+    id_prestador NUMERIC,
+	CONSTRAINT FK_T_JR_MODAL_T_JR_PRESTADOR FOREIGN KEY (id_prestador) REFERENCES T_JR_PRESTADOR(id_prestador)
+);
+
+--CRIACAO DA TABELA T_JR_LOCALIZACAO
+CREATE TABLE T_JR_LOCALIZACAO(
+	id_localizacao NUMERIC CONSTRAINT PK_T_JR_LOCALIZACAO PRIMARY KEY,
+	nome_rodovia VARCHAR2(60) NOT NULL,
+	km NUMERIC(10) NOT NULL,
+	cep VARCHAR2(60),
+	referencia VARCHAR2(60)
+);
+
+--CRIACAO DA TABELA T_JR_ATENDIMENTO
+CREATE TABLE T_JR_ATENDIMENTO(
+	id_atendimento NUMERIC CONSTRAINT PK_T_JR_ATENDIMENTO PRIMARY KEY,
+	data_atendimento DATE NOT NULL,
+	pbtc NUMERIC NOT NULL,
+    id_localizacao NUMERIC NOT NULL,
+    id_cliente NUMERIC NOT NULL,
+    id_veiculo NUMERIC NOT NULL,
+    id_modal NUMERIC NOT NULL,
+	CONSTRAINT FK_T_JR_ATENTIMENTO_T_JR_LOCALIZACAO FOREIGN KEY (id_localizacao) REFERENCES T_JR_LOCALIZACAO(id_localizacao),
+	CONSTRAINT FK_T_JR_ATENTIMENTO_T_JR_CLIENTE FOREIGN KEY (id_cliente) REFERENCES T_JR_CLIENTE(id_cliente),
+	CONSTRAINT FK_T_JR_ATENTIMENTO_T_JR_VEICULO_CLIENTE FOREIGN KEY (id_veiculo) REFERENCES T_JR_VEICULO_CLIENTE(id_veiculo),
+	CONSTRAINT FK_T_JR_ATENTIMENTO_T_JR_MODAL FOREIGN KEY (id_modal) REFERENCES T_JR_MODAL(id_modal)
+
+);
+
+
+--------------------------------------------------------------------------------
+
+
+--INCLUSAO DE DADOS NA TABELA T_JR_FABRICANTE
+INSERT INTO t_jr_fabricante(id_fabricante,nome, modelo)
+VALUES(1,'Volvo','FMX');
+INSERT INTO t_jr_fabricante(id_fabricante,nome, modelo)
+VALUES(2,'SCANIA','P 420');
+INSERT INTO t_jr_fabricante(id_fabricante,nome, modelo)
+VALUES(3,'Mercedes','Actros Euro6');
+INSERT INTO t_jr_fabricante(id_fabricante,nome, modelo)
+VALUES(4,'Ford','Ranger');
+INSERT INTO t_jr_fabricante(id_fabricante,nome, modelo)
+VALUES(5,'Scania','F 340');
+INSERT INTO t_jr_fabricante(id_fabricante,nome, modelo)
+VALUES(6,'Volvo','FH');
+INSERT INTO t_jr_fabricante(id_fabricante,nome, modelo)
+VALUES(7,'Mercedes','Euro10');
+
+--SELECT PARA MOSTRAR COMO ESTA A TABELA APOS INCLUSAO DAS LINHAS
+SELECT * FROM t_jr_fabricante;
+
+
+--UPDATE NA TABELA T_JR_FABRICANTE ALTERANDO O NOME COM BASE NO MODELO
+UPDATE t_jr_fabricante
+SET nome = 'Renault'
+WHERE modelo = 'Euro10';
+--UPDATE NA TABELA T_JR_FABRICANTE ALTERANDO O MODELO COM BASE NO NOME
+UPDATE t_jr_fabricante
+SET modelo = 'Master'
+WHERE nome = 'Renault';
+--UPDATE NA TABELA T_JR_FABRICANTE ALTERANDO O MODELO COM BASE NO NOME E ID
+UPDATE t_jr_fabricante
+SET modelo = 'FH 545'
+WHERE nome = 'Volvo' and id_fabricante = 6;
+
+--SELECT PARA MOSTRAR COMO ESTA A TABELA APOS ALTERACOES
+SELECT * FROM t_jr_fabricante;
+
+--EXCLUSAO DA LINHA COM BASE NO NOME INFORMADO
+DELETE FROM t_jr_fabricante
+WHERE nome = 'Renault';
+--EXCLUSAO DA LINHA COM BASE NO MODELO INFORMADO
+DELETE FROM t_jr_fabricante
+WHERE modelo = 'Ranger';
+--EXCLUSAO DA LINHA COM BASE NO ID INFORMADO
+DELETE FROM t_jr_fabricante
+WHERE id_fabricante = 6;
+
+--SELECT PARA MOSTRAR COMO A TABELA FICOU APOS A EXCLUSAO DE LINHAS
+SELECT * FROM t_jr_fabricante;
 
 --------------------------------------------------------------------------------
 --------------------------------------------------------------------------------
@@ -284,9 +310,6 @@ where id_cliente = 3;
 select * from t_jr_cliente;
 
 --Delete da tabela t_jr_cliente;
-delete from t_jr_cliente
-where id_cliente = 7;
-
 delete from t_jr_cliente
 where id_cliente = 7;
 
@@ -622,7 +645,6 @@ values(7,'29/11/2020',709786,3,1,2,5);
 select * from t_jr_atendimento;
 
 --Update de informacoes na tabela t_jr_atendimento
-
 Update t_jr_atendimento
 set pbtc = 9000000
 where id_atendimento = 1;
