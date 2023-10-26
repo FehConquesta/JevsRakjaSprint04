@@ -12,7 +12,7 @@ package br.com.rakja.model.vo;
  *
  */
 public class Implemento {
-    private int id_implemento;
+    private int idImplemento;
     private String tipoImplemento;
 
 
@@ -20,12 +20,12 @@ public class Implemento {
         this.tipoImplemento = tipoImplemento;
     }
 
-    public int getId_implemento() {
-        return id_implemento;
+    public int getIdImplemento() {
+        return idImplemento;
     }
 
-    public void setId_implemento(int id_implemento) {
-        this.id_implemento = id_implemento;
+    public void setIdImplemento(int idImplemento) {
+        this.idImplemento = idImplemento;
     }
 
     public String getTipoImplemento() {

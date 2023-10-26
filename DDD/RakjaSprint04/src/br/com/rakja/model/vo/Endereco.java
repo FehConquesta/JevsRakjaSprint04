@@ -1,6 +1,5 @@
 package br.com.rakja.model.vo;
 
-
 /**
  * Criação da classe endereço
  * para utilização do cadastro dos clientes
@@ -11,15 +10,18 @@ package br.com.rakja.model.vo;
  */
 
 public class Endereco {
-    private int id_endereco;
+    private int idEndereco;
     private String cep;
     private String logradouro;
     private int numero;
     private String complemento;
     private String referencia;
 
-    public Endereco(int id_endereco, String cep, String logradouro, int numero, String complemento, String referencia) {
-        this.id_endereco = id_endereco;
+    public Endereco() {
+    }
+
+    public Endereco(int idEndereco, String cep, String logradouro, int numero, String complemento, String referencia) {
+        this.idEndereco = idEndereco;
         this.cep = cep;
         this.logradouro = logradouro;
         this.numero = numero;
@@ -28,18 +30,18 @@ public class Endereco {
     }
 
     public Endereco(int id_endereco, String cep, String logradouro, int numero) {
-        this.id_endereco = id_endereco;
+        this.idEndereco = id_endereco;
         this.cep = cep;
         this.logradouro = logradouro;
         this.numero = numero;
     }
 
-    public int getId_endereco() {
-        return id_endereco;
+    public int getIdEndereco() {
+        return idEndereco;
     }
 
-    public void setId_endereco(int id_endereco) {
-        this.id_endereco = id_endereco;
+    public void setIdEndereco(int idEndereco) {
+        this.idEndereco = idEndereco;
     }
 
     public String getCep() {

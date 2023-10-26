@@ -10,26 +10,26 @@ package br.com.rakja.model.vo;
  */
 
 public class Cliente {
-    private int id_cliente;
+    private int idCliente;
     private String cpf;
-    private String nome_completo;
+    private String nomeCompleto;
     private String rg;
     private Endereco endereco;
 
     public Cliente(int id_cliente, String cpf, String nome_completo, String rg, Endereco endereco) {
-        this.id_cliente = id_cliente;
+        this.idCliente = id_cliente;
         this.cpf = cpf;
-        this.nome_completo = nome_completo;
+        this.nomeCompleto = nome_completo;
         this.rg = rg;
         this.endereco = endereco;
     }
 
-    public int getId_cliente() {
-        return id_cliente;
+    public int getIdCliente() {
+        return idCliente;
     }
 
-    public void setId_cliente(int id_cliente) {
-        this.id_cliente = id_cliente;
+    public void setIdCliente(int idCliente) {
+        this.idCliente = idCliente;
     }
 
     public String getCpf() {
@@ -40,12 +40,12 @@ public class Cliente {
         this.cpf = cpf;
     }
 
-    public String getNome_completo() {
-        return nome_completo;
+    public String getNomeCompleto() {
+        return nomeCompleto;
     }
 
-    public void setNome_completo(String nome_completo) {
-        this.nome_completo = nome_completo;
+    public void setNomeCompleto(String nomeCompleto) {
+        this.nomeCompleto = nomeCompleto;
     }
 
     public String getRg() {
