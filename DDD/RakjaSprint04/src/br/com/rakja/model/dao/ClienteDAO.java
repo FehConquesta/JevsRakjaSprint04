@@ -17,16 +17,17 @@ public class ClienteDAO {
     public ClienteDAO(Connection connection){
         this.connection = connection;
     }
+
+
     public void inserirCliente(Cliente cliente){
         try{
             PreparedStatement ps = connection.prepareStatement("INSERT INTO tb_jr_cliente"
-            + "(id_cliente, cpf, nome_completo, rg, id_endereco)"
-                    +"VALUES(?,?,?,?,?) ");
-            ps.setInt(1,cliente.getIdCliente());
-            ps.setString(2,cliente.getCpf());
-            ps.setString(3,cliente.getNomeCompleto());
-            ps.setString(4,cliente.getRg());
-            ps.setInt(5,cliente.getEndereco().getIdEndereco());
+            + "( cpf, nome_completo, rg, id_endereco)"
+                    +"VALUES(?,?,?,?) ");
+            ps.setString(1,cliente.getCpf());
+            ps.setString(2,cliente.getNomeCompleto());
+            ps.setString(3,cliente.getRg());
+            ps.setInt(4,cliente.getEndereco().getIdEndereco());
             ps.execute();
             System.out.println("Cliente cadastrado com sucesso!");
         }catch (SQLException e){
@@ -44,6 +45,7 @@ public class ClienteDAO {
             ps.setString(2,cliente.getNomeCompleto());
             ps.setString(3,cliente.getRg());
             ps.setInt(4,cliente.getEndereco().getIdEndereco());
+            ps.setInt(5,cliente.getIdCliente());
             ps.execute();
             System.out.println("Cliente alterado com sucesso !");
         }catch (SQLException e) {
@@ -76,7 +78,7 @@ public class ClienteDAO {
                 String cpf = rs.getString(2);
                 String nome = rs.getString(3);
                 String rg = rs.getString(4);
-                int idEndereco = rs.getInt(5);
+                Endereco idEndereco = (Endereco) rs.getObject(5);
 
                 cliente = new Cliente(idCliente,cpf,nome,rg,idEndereco);
 
@@ -100,7 +102,7 @@ public class ClienteDAO {
                 String cpf = rs.getString(2);
                 String nome = rs.getString(3);
                 String rg = rs.getString(4);
-                int idEndereco = rs.getInt(5);
+                Endereco idEndereco = (Endereco) rs.getObject(5);
                 clientes.add(new Cliente(idCliente,cpf,nome,rg,idEndereco));
             }
             System.out.println("Lista Criada!");
