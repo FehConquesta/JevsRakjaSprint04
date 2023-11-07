@@ -21,7 +21,7 @@ public class FabricanteDAO {
     public void inserirFabricante (Fabricante fabricante){
         try{
             PreparedStatement ps = connection.prepareStatement("INSERT INTO tb_jr_fabricante"
-                    +"(nome, modelo"
+                    +"(nome, modelo)"
                     +"VALUES(?, ?)");
             ps.setString(1,fabricante.getNome());
             ps.setString(2,fabricante.getModelo());

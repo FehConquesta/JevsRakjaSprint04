@@ -7,16 +7,21 @@ public class VeiculoCliente {
     private int portas;
     private long renavam;
     private Seguro apolice;
+
+
+
+    private Fabricante fabricante;
     private Implemento implemento;
     private Cliente cliente;
 
-    public VeiculoCliente(int id_veiculo, String placa, int ano, int portas, long renavam, Seguro apolice, Implemento implemento, Cliente cliente) {
+    public VeiculoCliente(int id_veiculo, String placa, int ano, int portas, long renavam, Seguro apolice, Fabricante fabricante, Implemento implemento, Cliente cliente) {
         this.idVeiculo = id_veiculo;
         this.placa = placa;
         this.ano = ano;
         this.portas = portas;
         this.renavam = renavam;
         this.apolice = apolice;
+        this.fabricante = fabricante;
         this.implemento = implemento;
         this.cliente = cliente;
     }
@@ -67,6 +72,14 @@ public class VeiculoCliente {
 
     public void setApolice(Seguro apolice) {
         this.apolice = apolice;
+    }
+
+    public Fabricante getFabricante() {
+        return fabricante;
+    }
+
+    public void setFabricante(Fabricante fabricante) {
+        this.fabricante = fabricante;
     }
 
     public Implemento getImplemento() {

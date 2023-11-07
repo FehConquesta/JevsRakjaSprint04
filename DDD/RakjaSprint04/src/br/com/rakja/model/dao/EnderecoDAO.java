@@ -21,7 +21,7 @@ public class EnderecoDAO {
     public void inserirEndereco (Endereco endereco){
         try{
             PreparedStatement ps = connection.prepareStatement("INSERT INTO tb_jr_endereco"
-                    +"(cep, logradouro, numero, complemento, referencia"
+                    +"(cep, logradouro, numero, complemento, referencia)"
                     +"VALUES(?, ?, ?, ?, ?)");
             ps.setString(1,endereco.getCep());
             ps.setString(2,endereco.getLogradouro());

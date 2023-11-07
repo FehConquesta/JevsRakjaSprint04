@@ -20,7 +20,7 @@ public class PrestadorDAO {
     public void inserirPrestador (Prestador prestador){
         try{
             PreparedStatement ps = connection.prepareStatement("INSERT INTO tb_jr_prestador"
-            +"(nome_completo, cpf, rg, id_endereco"
+            +"(nome_completo, cpf, rg, id_endereco)"
             +"VALUES(?, ?, ?, ?)");
             ps.setString(1,prestador.getNomeCompleto());
             ps.setString(2,prestador.getCpf());
