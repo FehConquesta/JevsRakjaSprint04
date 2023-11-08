@@ -21,6 +21,85 @@ DROP TABLE T_JR_ENDERECO;
 DROP TABLE T_JR_FABRICANTE;
 DROP TABLE T_JR_IMPLEMENTO;
 
+------------------DROP DAS SEQUENCE UTILIZANDO DROP SEQUENCE -------------------
+--------------------------------------------------------------------------------
+DROP SEQUENCE SEQ_ATENDIMENTO;
+DROP SEQUENCE SEQ_LOCALIZACAO;
+DROP SEQUENCE SEQ_MODAL;
+DROP SEQUENCE SEQ_PRESTADOR;
+DROP SEQUENCE SEQ_VEICULO;
+DROP SEQUENCE SEQ_CLIENTE;
+DROP SEQUENCE SEQ_ENDERECO;
+DROP SEQUENCE SEQ_FABRICANTE;
+DROP SEQUENCE SEQ_IMPLEMENTO;
+
+
+
+
+
+
+
+-------------------------CRIACAO DAS SEQUENCE-----------------------------------
+--------------------------------------------------------------------------------
+
+CREATE SEQUENCE SEQ_ATENDIMENTO
+START WITH 1
+INCREMENT BY 1  
+MINVALUE 1 
+MAXVALUE 1000
+NOCYCLE;
+CREATE SEQUENCE SEQ_LOCALIZACAO
+START WITH 1
+INCREMENT BY 1  
+MINVALUE 1 
+MAXVALUE 1000
+NOCYCLE;
+CREATE SEQUENCE SEQ_MODAL
+START WITH 1
+INCREMENT BY 1  
+MINVALUE 1 
+MAXVALUE 1000
+NOCYCLE;
+CREATE SEQUENCE SEQ_PRESTADOR
+START WITH 1
+INCREMENT BY 1  
+MINVALUE 1 
+MAXVALUE 1000
+NOCYCLE;
+CREATE SEQUENCE SEQ_VEICULO
+START WITH 1
+INCREMENT BY 1  
+MINVALUE 1 
+MAXVALUE 1000
+NOCYCLE;
+CREATE SEQUENCE SEQ_CLIENTE
+START WITH 1
+INCREMENT BY 1  
+MINVALUE 1 
+MAXVALUE 1000
+NOCYCLE;
+CREATE SEQUENCE SEQ_ENDERECO
+START WITH 1
+INCREMENT BY 1  
+MINVALUE 1 
+MAXVALUE 1000
+NOCYCLE;
+CREATE SEQUENCE SEQ_FABRICANTE
+START WITH 1
+INCREMENT BY 1  
+MINVALUE 1 
+MAXVALUE 1000
+NOCYCLE;
+CREATE SEQUENCE SEQ_IMPLEMENTO
+START WITH 1
+INCREMENT BY 1  
+MINVALUE 1 
+MAXVALUE 1000
+NOCYCLE;
+
+
+
+
 -----------------CRIACAO DAS TABELAS UTILIZANDO CREATE TABLE--------------------
 --------------------------------------------------------------------------------
 
@@ -135,19 +214,19 @@ CREATE TABLE T_JR_ATENDIMENTO(
 
 --INCLUSAO DE DADOS NA TABELA T_JR_FABRICANTE
 INSERT INTO t_jr_fabricante(id_fabricante,nome, modelo)
-VALUES(1,'Volvo','FMX');
+VALUES(SEQ_FABRICANTE.NEXTVAL,'Volvo','FMX');
 INSERT INTO t_jr_fabricante(id_fabricante,nome, modelo)
-VALUES(2,'SCANIA','P 420');
+VALUES(SEQ_FABRICANTE.NEXTVAL,'SCANIA','P 420');
 INSERT INTO t_jr_fabricante(id_fabricante,nome, modelo)
-VALUES(3,'Mercedes','Actros Euro6');
+VALUES(SEQ_FABRICANTE.NEXTVAL,'Mercedes','Actros Euro6');
 INSERT INTO t_jr_fabricante(id_fabricante,nome, modelo)
-VALUES(4,'Ford','Ranger');
+VALUES(SEQ_FABRICANTE.NEXTVAL,'Ford','Ranger');
 INSERT INTO t_jr_fabricante(id_fabricante,nome, modelo)
-VALUES(5,'Scania','F 340');
+VALUES(SEQ_FABRICANTE.NEXTVAL,'Scania','F 340');
 INSERT INTO t_jr_fabricante(id_fabricante,nome, modelo)
-VALUES(6,'Volvo','FH');
+VALUES(SEQ_FABRICANTE.NEXTVAL,'Volvo','FH');
 INSERT INTO t_jr_fabricante(id_fabricante,nome, modelo)
-VALUES(7,'Mercedes','Euro10');
+VALUES(SEQ_FABRICANTE.NEXTVAL,'Mercedes','Euro10');
 
 --SELECT PARA MOSTRAR COMO ESTA A TABELA APOS INCLUSAO DAS LINHAS
 SELECT * FROM t_jr_fabricante;
@@ -188,13 +267,13 @@ SELECT * FROM t_jr_fabricante;
 
 
 --insert na tabela t_jr_implemento
-INSERT INTO t_jr_implemento(id_implemento,tipo_implemento) VALUES(1,'Carga Seca');
-INSERT INTO t_jr_implemento(id_implemento,tipo_implemento) VALUES(2,'Bau');
-INSERT INTO t_jr_implemento(id_implemento,tipo_implemento) VALUES(3,'Cegonha');
-INSERT INTO t_jr_implemento(id_implemento,tipo_implemento) VALUES(4,'Graneleiro');
-INSERT INTO t_jr_implemento(id_implemento,tipo_implemento) VALUES(5,'Tanque');
-INSERT INTO t_jr_implemento(id_implemento,tipo_implemento) VALUES(6,'Refrigerado');
-INSERT INTO t_jr_implemento(id_implemento,tipo_implemento) VALUES(7,'Carroceria Aberta');
+INSERT INTO t_jr_implemento(id_implemento,tipo_implemento) VALUES(SEQ_IMPLEMENTO.NEXTVAL,'Carga Seca');
+INSERT INTO t_jr_implemento(id_implemento,tipo_implemento) VALUES(SEQ_IMPLEMENTO.NEXTVAL,'Bau');
+INSERT INTO t_jr_implemento(id_implemento,tipo_implemento) VALUES(SEQ_IMPLEMENTO.NEXTVAL,'Cegonha');
+INSERT INTO t_jr_implemento(id_implemento,tipo_implemento) VALUES(SEQ_IMPLEMENTO.NEXTVAL,'Graneleiro');
+INSERT INTO t_jr_implemento(id_implemento,tipo_implemento) VALUES(SEQ_IMPLEMENTO.NEXTVAL,'Tanque');
+INSERT INTO t_jr_implemento(id_implemento,tipo_implemento) VALUES(SEQ_IMPLEMENTO.NEXTVAL,'Refrigerado');
+INSERT INTO t_jr_implemento(id_implemento,tipo_implemento) VALUES(SEQ_IMPLEMENTO.NEXTVAL,'Carroceria Aberta');
 
 --Select para mostrar como esta a tabela apos os insert
 select * from t_jr_implemento;
@@ -234,13 +313,13 @@ select * from t_jr_implemento;
 --------------------------------------------------------------------------------
 
 --insert na tabela t_jr_endereco
-INSERT INTO t_jr_endereco(id_endereco,cep,logradouro,numero,complemento,referencia) VALUES(1,'03268-000','Rua dos animais', 35,'','Proximo a um pe de jabuticaba');
-INSERT INTO t_jr_endereco(id_endereco,cep,logradouro,numero,complemento,referencia) VALUES(2,'03269-050','Rua dos bichos', 74,'','');
-INSERT INTO t_jr_endereco(id_endereco,cep,logradouro,numero,complemento,referencia) VALUES(3,'03268-100','Rua Ananias', 351,'','Em frente ao bar do Gordo');
-INSERT INTO t_jr_endereco(id_endereco,cep,logradouro,numero,complemento,referencia) VALUES(4,'03268-001','Rua Poloni', 180,'Fica na Viela','');
-INSERT INTO t_jr_endereco(id_endereco,cep,logradouro,numero,complemento,referencia) VALUES(5,'03277-000','Rua da Luz', 21,'','Proximo ao Mercado do amor');
-INSERT INTO t_jr_endereco(id_endereco,cep,logradouro,numero,complemento,referencia) VALUES(6,'03268-666','Rua Osters', 101,'Fundos','Portao amarelo');
-INSERT INTO t_jr_endereco(id_endereco,cep,logradouro,numero,complemento,referencia) VALUES(7,'03666-000','Rua China', 69,'Casa 2','Casa do final da rua');
+INSERT INTO t_jr_endereco(id_endereco,cep,logradouro,numero,complemento,referencia) VALUES(SEQ_ENDERECO.NEXTVAL,'03268-000','Rua dos animais', 35,'','Proximo a um pe de jabuticaba');
+INSERT INTO t_jr_endereco(id_endereco,cep,logradouro,numero,complemento,referencia) VALUES(SEQ_ENDERECO.NEXTVAL,'03269-050','Rua dos bichos', 74,'','');
+INSERT INTO t_jr_endereco(id_endereco,cep,logradouro,numero,complemento,referencia) VALUES(SEQ_ENDERECO.NEXTVAL,'03268-100','Rua Ananias', 351,'','Em frente ao bar do Gordo');
+INSERT INTO t_jr_endereco(id_endereco,cep,logradouro,numero,complemento,referencia) VALUES(SEQ_ENDERECO.NEXTVAL,'03268-001','Rua Poloni', 180,'Fica na Viela','');
+INSERT INTO t_jr_endereco(id_endereco,cep,logradouro,numero,complemento,referencia) VALUES(SEQ_ENDERECO.NEXTVAL,'03277-000','Rua da Luz', 21,'','Proximo ao Mercado do amor');
+INSERT INTO t_jr_endereco(id_endereco,cep,logradouro,numero,complemento,referencia) VALUES(SEQ_ENDERECO.NEXTVAL,'03268-666','Rua Osters', 101,'Fundos','Portao amarelo');
+INSERT INTO t_jr_endereco(id_endereco,cep,logradouro,numero,complemento,referencia) VALUES(SEQ_ENDERECO.NEXTVAL,'03666-000','Rua China', 69,'Casa 2','Casa do final da rua');
 
 --Select para mostrar como esta a tabela apos o insert
 select*from t_jr_endereco;
@@ -280,13 +359,13 @@ select*from t_jr_endereco;
 --------------------------------------------------------------------------------
 
 -- Insert na tabela t_jr_cliente
-INSERT INTO t_jr_cliente (id_cliente,cpf,nome_completo,rg,id_endereco) values (1,'321.365.525-29', 'Eduardo Bezerra', '32.954.589-6',2);
-INSERT INTO t_jr_cliente (id_cliente,cpf,nome_completo,rg,id_endereco) values (2,'321.666.525-29', 'Jefferson Mendes', '33.333.589-3',2);
-INSERT INTO t_jr_cliente (id_cliente,cpf,nome_completo,rg,id_endereco) values (3,'321.365.666-29', 'Joao Victor Benjamin', '32.222.229-2',3);
-INSERT INTO t_jr_cliente (id_cliente,cpf,nome_completo,rg,id_endereco) values (4,'321.365.525-66', 'Luiz Felipe Biazzola', '31.111.589-1',5);
-INSERT INTO t_jr_cliente (id_cliente,cpf,nome_completo,rg,id_endereco) values (5,'666.365.525-29', 'Silas Henrique', '32.544.111-6',6);
-INSERT INTO t_jr_cliente (id_cliente,cpf,nome_completo,rg,id_endereco) values (6,'333.322.525-22', 'Osmar Olindo', '34.444.589-4',5);
-INSERT INTO t_jr_cliente (id_cliente,cpf,nome_completo,rg,id_endereco) values (7,'111.365.111-29', 'Rebecca Chambers', '31.123.123-6',6);
+INSERT INTO t_jr_cliente (id_cliente,cpf,nome_completo,rg,id_endereco) values (SEQ_CLIENTE.NEXTVAL,'321.365.525-29', 'Eduardo Bezerra', '32.954.589-6',2);
+INSERT INTO t_jr_cliente (id_cliente,cpf,nome_completo,rg,id_endereco) values (SEQ_CLIENTE.NEXTVAL,'321.666.525-29', 'Jefferson Mendes', '33.333.589-3',2);
+INSERT INTO t_jr_cliente (id_cliente,cpf,nome_completo,rg,id_endereco) values (SEQ_CLIENTE.NEXTVAL,'321.365.666-29', 'Joao Victor Benjamin', '32.222.229-2',3);
+INSERT INTO t_jr_cliente (id_cliente,cpf,nome_completo,rg,id_endereco) values (SEQ_CLIENTE.NEXTVAL,'321.365.525-66', 'Luiz Felipe Biazzola', '31.111.589-1',5);
+INSERT INTO t_jr_cliente (id_cliente,cpf,nome_completo,rg,id_endereco) values (SEQ_CLIENTE.NEXTVAL,'666.365.525-29', 'Silas Henrique', '32.544.111-6',6);
+INSERT INTO t_jr_cliente (id_cliente,cpf,nome_completo,rg,id_endereco) values (SEQ_CLIENTE.NEXTVAL,'333.322.525-22', 'Osmar Olindo', '34.444.589-4',5);
+INSERT INTO t_jr_cliente (id_cliente,cpf,nome_completo,rg,id_endereco) values (SEQ_CLIENTE.NEXTVAL,'111.365.111-29', 'Rebecca Chambers', '31.123.123-6',6);
 
 --Select para mostrar como esta a tabela apos os insert
 select * from t_jr_cliente;
@@ -380,25 +459,25 @@ INSERT INTO t_jr_seguro(numero_apolice, id_cliente) values ('cat3',2);
 
 --inclusao de dados na tabela t_jr_veiculo_cliente
 INSERT INTO t_jr_veiculo_cliente(id_veiculo,placa,ano,renavam, numero_apolice, portas,id_implemento,id_fabricante,id_cliente)
-VALUES(1,'XPT-001',1993,080077, 'zx99',3,1,1,2);
+VALUES(SEQ_VEICULO.NEXTVAL,'XPT-001',1993,080077, 'zx99',3,1,1,2);
 
 INSERT INTO t_jr_veiculo_cliente(id_veiculo,placa,ano,renavam, numero_apolice, portas, id_implemento,id_fabricante,id_cliente)
-VALUES(2,'XPT-002',2000,080666, '7987',2,2,1,2);
+VALUES(SEQ_VEICULO.NEXTVAL,'XPT-002',2000,080666, '7987',2,2,1,2);
 
 INSERT INTO t_jr_veiculo_cliente(id_veiculo,placa,ano,renavam, numero_apolice, portas, id_implemento,id_fabricante,id_cliente)
-VALUES(3,'XPT-003',1970,080777, '8761',5,2,2,1);
+VALUES(SEQ_VEICULO.NEXTVAL,'XPT-003',1970,080777, '8761',5,2,2,1);
 
 INSERT INTO t_jr_veiculo_cliente(id_veiculo,placa,ano,renavam, numero_apolice, portas, id_implemento,id_fabricante,id_cliente)
-VALUES(4,'XPT-004',2020,088888, 'H666',3,5,2,5);
+VALUES(SEQ_VEICULO.NEXTVAL,'XPT-004',2020,088888, 'H666',3,5,2,5);
 
 INSERT INTO t_jr_veiculo_cliente(id_veiculo,placa,ano,renavam, numero_apolice, portas, id_implemento,id_fabricante,id_cliente)
-VALUES(5,'XPT-051',2022,089999, 'alp9',2,1,3,3);
+VALUES(SEQ_VEICULO.NEXTVAL,'XPT-051',2022,089999, 'alp9',2,1,3,3);
 
 INSERT INTO t_jr_veiculo_cliente(id_veiculo,placa,ano,renavam, numero_apolice, portas, id_implemento,id_fabricante,id_cliente)
-VALUES(6,'XPT-066',2023,080099, 'pls1',2,6,5,5);
+VALUES(SEQ_VEICULO.NEXTVAL,'XPT-066',2023,080099, 'pls1',2,6,5,5);
 
 INSERT INTO t_jr_veiculo_cliente(id_veiculo,placa,ano,renavam, numero_apolice, portas, id_implemento,id_fabricante,id_cliente)
-VALUES(7,'XPT-099',1999,990077, 'cat3',4,6,5,2);
+VALUES(SEQ_VEICULO.NEXTVAL,'XPT-099',1999,990077, 'cat3',4,6,5,2);
 
 
 --Select para mostrar como esta a tabela apos inclusao de dados
@@ -441,25 +520,25 @@ select*from t_jr_veiculo_cliente;
 
 -- Inclusao de dados na tabela t_jr_prestador
 INSERT INTO t_jr_prestador(id_prestador, cpf, nome_completo, rg, id_endereco)
-values(1, '999.999.999-99', 'Wesley Snipes', '99.999.999-9',2);
+values(SEQ_PRESTADOR.NEXTVAL, '999.999.999-99', 'Wesley Snipes', '99.999.999-9',2);
 
 INSERT INTO t_jr_prestador(id_prestador, cpf, nome_completo, rg, id_endereco)
-values(2, '222.999.999-99', 'Thor Odinson', '99.999.111-9',2);
+values(SEQ_PRESTADOR.NEXTVAL, '222.999.999-99', 'Thor Odinson', '99.999.111-9',2);
 
 INSERT INTO t_jr_prestador(id_prestador, cpf, nome_completo, rg, id_endereco)
-values(3, '999.222.999-99', 'Bruce Banner', '99.999.222-9',3);
+values(SEQ_PRESTADOR.NEXTVAL, '999.222.999-99', 'Bruce Banner', '99.999.222-9',3);
 
 INSERT INTO t_jr_prestador(id_prestador, cpf, nome_completo, rg, id_endereco)
-values(4, '999.999.222-99', 'Scarlet Scarlate', '99.999.333-9',5);
+values(SEQ_PRESTADOR.NEXTVAL, '999.999.222-99', 'Scarlet Scarlate', '99.999.333-9',5);
 
 INSERT INTO t_jr_prestador(id_prestador, cpf, nome_completo, rg, id_endereco)
-values(5, '999.999.999-22', 'Bob Esponja', '99.999.444-9',5);
+values(SEQ_PRESTADOR.NEXTVAL, '999.999.999-22', 'Bob Esponja', '99.999.444-9',5);
 
 INSERT INTO t_jr_prestador(id_prestador, cpf, nome_completo, rg, id_endereco)
-values(6, '222.222.222-22', 'Patrick Estrela', '99.999.555-9',6);
+values(SEQ_PRESTADOR.NEXTVAL, '222.222.222-22', 'Patrick Estrela', '99.999.555-9',6);
 
 INSERT INTO t_jr_prestador(id_prestador, cpf, nome_completo, rg, id_endereco)
-values(7, '111.999.222-99', 'Lula Molusco', '99.999.666-9',6);
+values(SEQ_PRESTADOR.NEXTVAL, '111.999.222-99', 'Lula Molusco', '99.999.666-9',6);
 
 --Select para exibir informacoes apos a inclusao
 select*from t_jr_prestador;
@@ -500,25 +579,25 @@ select*from t_jr_prestador;
 --------------------------------------------------------------------------------
 
 INSERT INTO t_jr_modal(id_modal, modelo, placa, disponibilidade, id_prestador)
-VALUES(1,'Munch','XPT-8780',1,1);
+VALUES(SEQ_MODAL.NEXTVAL,'Munch','XPT-8780',1,1);
 
 INSERT INTO t_jr_modal(id_modal, modelo, placa, disponibilidade, id_prestador)
-VALUES(2,'Lanca','HPB-8780',0,3);
+VALUES(SEQ_MODAL.NEXTVAL,'Lanca','HPB-8780',0,3);
 
 INSERT INTO t_jr_modal(id_modal, modelo, placa, disponibilidade, id_prestador)
-VALUES(3,'Zero Grau','XIS-8780',0,3);
+VALUES(SEQ_MODAL.NEXTVAL,'Zero Grau','XIS-8780',0,3);
 
 INSERT INTO t_jr_modal(id_modal, modelo, placa, disponibilidade, id_prestador)
-VALUES(4,'Plataforma','YES-8780',1,6);
+VALUES(SEQ_MODAL.NEXTVAL,'Plataforma','YES-8780',1,6);
 
 INSERT INTO t_jr_modal(id_modal, modelo, placa, disponibilidade, id_prestador)
-VALUES(5,'Plataforma','NOP-8780',1,4);
+VALUES(SEQ_MODAL.NEXTVAL,'Plataforma','NOP-8780',1,4);
 
 INSERT INTO t_jr_modal(id_modal, modelo, placa, disponibilidade, id_prestador)
-VALUES(6,'Munch','AHA-8780',0,4);
+VALUES(SEQ_MODAL.NEXTVAL,'Munch','AHA-8780',0,4);
 
 INSERT INTO t_jr_modal(id_modal, modelo, placa, disponibilidade, id_prestador)
-VALUES(7,'Lanca','MEH-8780',1,3);
+VALUES(SEQ_MODAL.NEXTVAL,'Lanca','MEH-8780',1,3);
 
 
 --Select para exibir tabela apos insercao de dados
@@ -563,25 +642,25 @@ select * from t_jr_modal;
 
 --Insert na tabela t_jr_localizacao
 INSERT INTO t_jr_localizacao (id_localizacao, nome_rodovia, km, cep, referencia)
-values(1,'Regis Bittencourt', 147,'','');
+values(SEQ_LOCALIZACAO.NEXTVAL,'Regis Bittencourt', 147,'','');
 
 INSERT INTO t_jr_localizacao (id_localizacao, nome_rodovia, km, cep, referencia)
-values(2,'Castelo Branco', 39,'','');
+values(SEQ_LOCALIZACAO.NEXTVAL,'Castelo Branco', 39,'','');
 
 INSERT INTO t_jr_localizacao (id_localizacao, nome_rodovia, km, cep, referencia)
-values(3,'Regis Bittencourt', 345,'','Proximo ao posto da Policia Rodoviaria');
+values(SEQ_LOCALIZACAO.NEXTVAL,'Regis Bittencourt', 345,'','Proximo ao posto da Policia Rodoviaria');
 
 INSERT INTO t_jr_localizacao (id_localizacao, nome_rodovia, km, cep, referencia)
-values(4,'Anhanguera', 79,'','');
+values(SEQ_LOCALIZACAO.NEXTVAL,'Anhanguera', 79,'','');
 
 INSERT INTO t_jr_localizacao (id_localizacao, nome_rodovia, km, cep, referencia)
-values(5,'Bandeirantes', 69,'','');
+values(SEQ_LOCALIZACAO.NEXTVAL,'Bandeirantes', 69,'','');
 
 INSERT INTO t_jr_localizacao (id_localizacao, nome_rodovia, km, cep, referencia)
-values(6,'Dutra', 88,'','Proximo ao pedagio');
+values(SEQ_LOCALIZACAO.NEXTVAL,'Dutra', 88,'','Proximo ao pedagio');
 
 INSERT INTO t_jr_localizacao (id_localizacao, nome_rodovia, km, cep, referencia)
-values(7,'Regis Bittencourt', 70,'','');
+values(SEQ_LOCALIZACAO.NEXTVAL,'Regis Bittencourt', 70,'','');
 
 --Select para mostrar a tabela apos inclusoes
 select*from t_jr_localizacao;
@@ -621,25 +700,25 @@ select*from t_jr_localizacao;
 
 --Insert na tabela t_jr_atendimento
 INSERT INTO t_jr_atendimento(id_atendimento, data_atendimento,pbtc, id_localizacao, id_cliente, id_veiculo, id_modal)
-values(1,'24/08/2000',2987,1,1,1,1);
+values(SEQ_ATENDIMENTO.NEXTVAL,'24/08/2000',2987,1,1,1,1);
 
 INSERT INTO t_jr_atendimento(id_atendimento, data_atendimento,pbtc, id_localizacao, id_cliente, id_veiculo, id_modal)
-values(2,'22/05/2020',40000,1,1,2,1);
+values(SEQ_ATENDIMENTO.NEXTVAL,'22/05/2020',40000,1,1,2,1);
 
 INSERT INTO t_jr_atendimento(id_atendimento, data_atendimento,pbtc, id_localizacao, id_cliente, id_veiculo, id_modal)
-values(3,'15/06/2023',37700,3,2,3,2);
+values(SEQ_ATENDIMENTO.NEXTVAL,'15/06/2023',37700,3,2,3,2);
 
 INSERT INTO t_jr_atendimento(id_atendimento, data_atendimento,pbtc, id_localizacao, id_cliente, id_veiculo, id_modal)
-values(4,'21/02/2022',8000004,3,3,3,3);
+values(SEQ_ATENDIMENTO.NEXTVAL,'21/02/2022',8000004,3,3,3,3);
 
 INSERT INTO t_jr_atendimento(id_atendimento, data_atendimento,pbtc, id_localizacao, id_cliente, id_veiculo, id_modal)
-values(5,'30/10/2021',98789,5,5,4,3);
+values(SEQ_ATENDIMENTO.NEXTVAL,'30/10/2021',98789,5,5,4,3);
 
 INSERT INTO t_jr_atendimento(id_atendimento, data_atendimento,pbtc, id_localizacao, id_cliente, id_veiculo, id_modal)
-values(6,'28/02/2019',3678987,5,5,4,5);
+values(SEQ_ATENDIMENTO.NEXTVAL,'28/02/2019',3678987,5,5,4,5);
 
 INSERT INTO t_jr_atendimento(id_atendimento, data_atendimento,pbtc, id_localizacao, id_cliente, id_veiculo, id_modal)
-values(7,'29/11/2020',709786,3,1,2,5);
+values(SEQ_ATENDIMENTO.NEXTVAL,'29/11/2020',709786,3,1,2,5);
 
 --Select para mostrar a tabela apos inclusao de dados
 select * from t_jr_atendimento;
@@ -698,6 +777,18 @@ where id_fabricante in (
     where ano = 1993);
 
 --Relatorio utilizando juncao de tabelas
-select t_jr_cliente.nome_completo, t_jr_veiculo_cliente.id_fabricante
-from t_jr_cliente
-join t_jr_veiculo_cliente on t_jr_veiculo_cliente.id_cliente = t_jr_veiculo_cliente.id_cliente;
+SELECT 
+    C.nome_completo AS nome_cliente,
+    V.placa,
+    V.ano,
+    V.numero_apolice,
+    I.tipo_implemento,
+    F.nome
+FROM 
+    T_JR_Cliente C
+INNER JOIN 
+    T_JR_Veiculo_CLIENTE V ON C.id_cliente = V.id_cliente
+INNER JOIN 
+    T_JR_IMPLEMENTO I ON V.id_implemento = I.id_implemento
+INNER JOIN 
+    T_JR_FABRICANTE F ON V.id_fabricante = F.id_fabricante;
