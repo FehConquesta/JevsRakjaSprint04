@@ -7,9 +7,6 @@ public class VeiculoCliente {
     private int portas;
     private long renavam;
     private Seguro apolice;
-
-
-
     private Fabricante fabricante;
     private Implemento implemento;
     private Cliente cliente;
