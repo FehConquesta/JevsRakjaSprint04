@@ -2,10 +2,11 @@ package br.com.jevsrakja.sprint04.model.bo;
 
 import br.com.jevsrakja.sprint04.model.dao.EnderecoDAO;
 import br.com.jevsrakja.sprint04.model.vo.Endereco;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
-
+@Service
 public class EnderecoBO {
 
     private EnderecoDAO repository;

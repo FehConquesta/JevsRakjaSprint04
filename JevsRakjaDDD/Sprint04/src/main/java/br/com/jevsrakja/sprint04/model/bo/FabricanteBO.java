@@ -4,10 +4,11 @@ package br.com.jevsrakja.sprint04.model.bo;
 
 import br.com.jevsrakja.sprint04.model.dao.FabricanteDAO;
 import br.com.jevsrakja.sprint04.model.vo.Fabricante;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
-
+@Service
 public class FabricanteBO {
 
     private FabricanteDAO repository;

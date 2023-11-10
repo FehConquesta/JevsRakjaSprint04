@@ -3,11 +3,12 @@ package br.com.jevsrakja.sprint04.model.bo;
 
 import br.com.jevsrakja.sprint04.model.dao.ModalDAO;
 import br.com.jevsrakja.sprint04.model.vo.Modal;
+import org.springframework.stereotype.Service;
 
 
 import java.util.List;
 import java.util.Optional;
-
+@Service
 public class ModalBO {
 
     private ModalDAO repository;

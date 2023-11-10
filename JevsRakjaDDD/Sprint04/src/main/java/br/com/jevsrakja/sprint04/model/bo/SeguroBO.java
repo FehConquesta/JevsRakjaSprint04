@@ -4,10 +4,11 @@ package br.com.jevsrakja.sprint04.model.bo;
 
 import br.com.jevsrakja.sprint04.model.dao.SeguroDAO;
 import br.com.jevsrakja.sprint04.model.vo.Seguro;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
-
+@Service
 public class SeguroBO {
     private SeguroDAO repository;
 
@@ -25,7 +26,7 @@ public class SeguroBO {
         return novoSeguro;
     }
 
-    public Seguro alterarISeguro(String apolice ,Seguro seguro){
+    public Seguro alterarSeguro(String apolice ,Seguro seguro){
         Optional<Seguro> optionalSeguro = repository.findById(apolice);
         if(optionalSeguro.isPresent()){
 

@@ -4,10 +4,11 @@ package br.com.jevsrakja.sprint04.model.bo;
 
 import br.com.jevsrakja.sprint04.model.dao.ImplementoDAO;
 import br.com.jevsrakja.sprint04.model.vo.Implemento;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
-
+@Service
 public class ImplementoBO {
 
     private ImplementoDAO repository;

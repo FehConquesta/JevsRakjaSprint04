@@ -3,10 +3,11 @@ package br.com.jevsrakja.sprint04.model.bo;
 
 import br.com.jevsrakja.sprint04.model.dao.VeiculoDAO;
 import br.com.jevsrakja.sprint04.model.vo.Veiculo;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
-
+@Service
 public class VeiculoBO {
     private VeiculoDAO repository;
 

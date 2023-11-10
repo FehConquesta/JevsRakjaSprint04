@@ -2,10 +2,11 @@ package br.com.jevsrakja.sprint04.model.bo;
 
 import br.com.jevsrakja.sprint04.model.dao.LocalizacaoDAO;
 import br.com.jevsrakja.sprint04.model.vo.Localizacao;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
-
+@Service
 public class LocalizacaoBO {
 
     private LocalizacaoDAO repository;
