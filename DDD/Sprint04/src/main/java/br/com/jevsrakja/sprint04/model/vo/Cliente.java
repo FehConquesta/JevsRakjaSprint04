@@ -26,7 +26,7 @@ public class Cliente {
     private int idCliente;
     /**
      * Atributo privado String cpf
-     * Será responsável por armazenar o cpf
+     * Será responsável por armazenar o cpf do cliente
      * Foi usado a marcação @Column para mostrar que o atributo será armazenado na coluna cpf
      * do banco de dados
      */
@@ -34,7 +34,7 @@ public class Cliente {
     private String cpf;
     /**
      * Atributo privado String nomeCompleto
-     * Será responsável por armazenar o nome completo
+     * Será responsável por armazenar o nome completo do cliente
      * Foi usado a marcação @Column para mostrar que o atributo será armazenado na coluna nome_completo
      * do banco de dados
      */
@@ -42,7 +42,7 @@ public class Cliente {
     private String nomeCompleto;
     /**
      * Atributo privado String rg
-     * Será responsável por armazenaso rg
+     * Será responsável por armazenaso rg do cliente
      * Foi usado a marcação @Column para mostrar que o atributo será armazenado na coluna rg
      * do banco de dados
      */

@@ -23,7 +23,7 @@ public class Endereco {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_endereco")
-    private int id;
+    private int idEndereco;
     /**
      * Atributo privado String cep
      * Será responsável por armazenar o cep do endereço
@@ -68,15 +68,15 @@ public class Endereco {
     /**
      * @return id
      */
-    public int getId() {
-        return id;
+    public int getIdEndereco() {
+        return idEndereco;
     }
 
     /**
-     * @param id the id to set
+     * @param idEndereco the id to set
      */
-    public void setId(int id) {
-        this.id = id;
+    public void setIdEndereco(int idEndereco) {
+        this.idEndereco = idEndereco;
     }
 
     /**

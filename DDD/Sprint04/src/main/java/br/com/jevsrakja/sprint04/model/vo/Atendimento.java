@@ -35,7 +35,7 @@ public class Atendimento {
     private String data;
     /**
      * Atributo privado pbtc
-     * Será responsável por armazenar a informação de Peso Bruto Total Carregado
+     * Será responsável por armazenar a informação de Peso Bruto Total Carregado do veiculo no atendimento
      * Foi usado a marcação @Column para mostrar que o atributo será armazenado na coluna pbtc do
      * banco de dados
      */
